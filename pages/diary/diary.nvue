@@ -63,28 +63,28 @@
 				tabBars: [{
 					id: "tab01",
 					name: '最新',
-					newsid: 0
+					newsid: -1
 				}, {
 					id: "tab02",
-					name: '大公司',
-					newsid: 23
+					name: 'JavaScript',
+					newsid: 61
 				}, {
 					id: "tab03",
-					name: '内容',
-					newsid: 223
+					name: 'Java',
+					newsid: 62
 				}, {
 					id: "tab04",
-					name: '消费',
-					newsid: 221
+					name: 'Python',
+					newsid: 63
 				}, {
 					id: "tab05",
-					name: '娱乐',
-					newsid: 225
+					name: 'C++',
+					newsid: 65
 				}, {
 					id: "tab06",
-					name: '区块链',
-					newsid: 208
-				}, ],
+					name: 'Linux',
+					newsid: 64
+				}],
 				scrollInto: "",
 				showTips: false,
 				navigateFlag: false,
@@ -120,7 +120,7 @@
 				}
 				activeTab.isLoading = true;
 				uni.request({
-					url: 'https://unidemo.dcloud.net.cn/api/news',
+					url: 'https://www.python1314.com/wp-json/wp/v2/posts',
 					data: activeTab.requestParams,
 					success: (result) => {
 						if (result.statusCode !== 200) {
@@ -131,12 +131,12 @@
 								id: this.newGuid() + news.id,
 								newsid: news.id,
 								article_type: 1,
-								datetime: friendlyDate(new Date(news.published_at.replace(/\-/g, '/')).getTime()),
-								title: news.title,
-								image_url: news.cover,
-								source: news.author_name,
-								comment_count: news.comments_count,
-								post_id: news.post_id
+								datetime: friendlyDate(new Date(news.date).getTime()),
+								title: news.title.rendered,
+								image_url: "",
+								source: "",
+								comment_count: "",
+								post_id: ""
 							};
 						});
 						if (action === 1) {

@@ -1,12 +1,12 @@
 <template>
     <view>
         <view class="banner" auto-focus>
-            <image class="banner-img" :src="banner.image_url"></image>
+            <image class="banner-img" :src="banner.image_url||'https://www.python1314.com/wp-content/uploads/2019/08/album.jpg' "></image>
             <text class="banner-title">{{banner.title}}</text>
         </view>
         <view class="article-meta">
             <text class="article-author">{{banner.source}}</text>
-            <text class="article-text">发表于</text>
+            <text class="article-text">分享于</text>
             <text class="article-time">{{banner.datetime}}</text>
         </view>
         <view class="article-content">
@@ -69,11 +69,11 @@
         methods: {
             getDetail() {
                 uni.request({
-                    url: 'https://unidemo.dcloud.net.cn/api/news/36kr/' + this.banner.post_id,
+                    url: 'https://www.python1314.com/wp-json/wp/v2/posts/' + this.banner.newsid,
                     success: (result) => {
                         let content = FAIL_CONTENT
                         if (result.statusCode == 200) {
-                            content = result.data.content
+                            content = result.data.content.rendered
                         }
                         const nodes = htmlParser(content);
                         // #ifdef APP-PLUS-NVUE
@@ -122,6 +122,7 @@
         padding: 20upx 40upx;
         flex-direction: row;
         justify-content: flex-start;
+		align-items: center;
         color: gray;
     }
 
