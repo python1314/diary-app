@@ -1,49 +1,71 @@
 {
     "name" : "diary-app",
     "appid" : "__UNI__9A112D9",
-    "description" : "基于uni-app开发的新闻/资讯类App模板",
-    "versionName" : "1.0.2",
-    "versionCode" : 102,
+    "description" : "每天精选推送技术博客文章。 每天进步一点点，一年后看到不一样的自己。",
+    "versionName" : "1.0.0",
+    "versionCode" : 100,
     "transformPx" : false,
     "app-plus" : {
         "usingComponents" : true,
         "nvueCompiler" : "uni-app",
         "renderer" : "native",
         /* 5+App特有相关 */
-        "modules" : {},
+        "modules" : {
+            "Share" : {},
+            "Push" : {},
+            "Statistic" : {}
+        },
         /* 模块配置 */
         "distribute" : {
             /* 应用发布信息 */
             "android" : {
                 /* android打包配置 */
                 "permissions" : [
-                    "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
-                    "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
-                    "<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
-                    "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
-                    "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
-                    "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+                    "<uses-feature android:name=\"android.hardware.camera\"/>",
                     "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
-                    "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
                     "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
                     "<uses-permission android:name=\"android.permission.CAMERA\"/>",
-                    "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
                     "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
                     "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
+                    "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
                     "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
-                    "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>",
+                    "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+                    "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
                     "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
-                    "<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
-                    "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
-                    "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
-                    "<uses-feature android:name=\"android.hardware.camera\"/>",
-                    "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
-                    "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
+                    "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>",
+                    "<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>"
                 ]
             },
             "ios" : {},
             /* ios打包配置 */
-            "sdkConfigs" : {}
+            "sdkConfigs" : {
+                "oauth" : {},
+                "push" : {
+                    "unipush" : {}
+                },
+                "share" : {
+                    "weixin" : {
+                        "appid" : "wxa3afb643ada42834"
+                    },
+                    "qq" : {
+                        "appid" : "1109733495"
+                    }
+                }
+            }
+        },
+        "splashscreen" : {
+            "alwaysShowBeforeRender" : true
         }
     },
     /* SDK配置 */
@@ -51,9 +73,12 @@
     /* 快应用特有相关 */
     "mp-weixin" : {
         /* 小程序特有相关 */
-        "appid" : "",
+        "appid" : "wxa3afb643ada42834",
         "setting" : {
-            "urlCheck" : false
+            "urlCheck" : true,
+            "es6" : true,
+            "minified" : true,
+            "postcss" : true
         },
         "usingComponents" : true
     },
@@ -68,13 +93,23 @@
     },
     "h5" : {
         "router" : {
-            "base" : "/demo/news/website/"
+            "base" : "/demo/news/website/",
+            "mode" : "hash"
         },
         "template" : "h5.template.html",
         "optimization" : {
             "treeShaking" : {
                 "enable" : true
             }
-        }
+        },
+        "title" : "派学日记"
+    },
+    "mp-qq" : {
+        "setting" : {
+            "es6" : true,
+            "postcss" : true,
+            "minified" : true
+        },
+        "appid" : "1109733495"
     }
 }
