@@ -1,17 +1,20 @@
 <template>
     <view>
-        <view class="banner" auto-focus>
+        <view class="banner"  v-if="false" auto-focus>
             <image class="banner-img" :src="banner.image_url||'https://www.python1314.com/wp-content/uploads/2019/08/album.jpg' "></image>
-            <text class="banner-title">{{banner.title}}</text>
         </view>
+		<view class="article-title">
+			<text class="title">{{banner.title}}</text>
+		</view>
         <view class="article-meta">
             <text class="article-author">{{banner.source}}</text>
-            <text class="article-text">分享于</text>
+            <text class="article-text"></text>
             <text class="article-time">{{banner.datetime}}</text>
         </view>
         <view class="article-content">
             <rich-text :nodes="content" style="font-size: 30rpx;"></rich-text>
-        </view>
+			<button v-if="false" class="article-button-link" @click="read(banner.link&&banner.link.href)" type="default">{{banner.link&&banner.link.text}}</button>
+		</view>
         <view class="comment-wrap"></view>
     </view>
 </template>
@@ -19,7 +22,7 @@
 <script>
     import htmlParser from '@/common/html-parser'
 
-    const FAIL_CONTENT = '<p>获取信息失败1</p>';
+    const FAIL_CONTENT = '<p>获取信息失败</p>';
 
     function parseImgs(nodes) {
         nodes.forEach(node => {
@@ -79,10 +82,35 @@
                         // #ifdef APP-PLUS-NVUE
                         parseImgs(nodes)
                         // #endif
+						this.banner['link'] = this.parseLink(nodes);
+						this.banner['link'] = this.banner['link'] && this.banner['link'][0];
+						
                         this.content = nodes
                     }
                 });
-            }
+            },
+			parseLink(nodes) {
+				let links = [];
+				for (let i = 0; i < nodes.length; i++) {
+					if (nodes[i]['name'] == 'a') {
+						let link = {
+							href: nodes[i]['attrs']['href'],
+							text: nodes[i]['children'][0]['text']
+						};
+						links.push(link);
+						nodes.splice(i);
+					} else if (nodes[i]['children'] && nodes[i]['children'].length) {
+						let cnodes = nodes[i]['children'];
+						return links.concat(this.parseLink(cnodes));
+					}
+				}
+				return links;
+			},
+			read(url) {
+				uni.navigateTo({
+				    url: '/pages/webview/webview?url=' + encodeURIComponent(url)
+				});
+			}
         }
     }
 </script>
@@ -117,9 +145,12 @@
         overflow: hidden;
         z-index: 11;
     }
-
+    .article-title {
+        padding: 20upx;	
+	}
     .article-meta {
-        padding: 20upx 40upx;
+        padding: 20upx;
+		padding-top: 0;
         flex-direction: row;
         justify-content: flex-start;
 		align-items: center;
@@ -127,13 +158,11 @@
     }
 
     .article-text {
-        font-size: 26upx;
-        line-height: 50upx;
-        margin: 0 20upx;
+        font-size: 28upx;
     }
 
     .article-author {
-        font-size: 30upx;
+        font-size: 28upx;
     }
 
     .article-time {
@@ -142,7 +171,8 @@
 
     .article-content {
         font-size: 30upx;
-        padding: 0 30upx;
+        padding: 0 20upx;
+		line-height: 60upx;
         margin-bottom: 30upx;
         overflow: hidden;
     }

@@ -1,0 +1,78 @@
+<template>
+	<view class="tools">
+		
+	</view>
+</template>
+<script>
+	// 缓存每页最多
+	const MAX_CACHE_DATA = 100;
+	// 缓存页签数量
+	const MAX_CACHE_PAGE = 3;
+
+	export default {
+		data() {
+			return {
+				activeTab: {},
+				list: []
+			}
+		},
+		onLoad() {
+			// this.getList(0);
+		},
+		methods: {
+			// getList(index, action = 1) {
+			// 	uni.request({
+			// 		url: 'https://www.python1314.com/wp-json/wp/v2/posts',
+			// 		data: {},
+			// 		success: (result) => {
+			// 			if (result.statusCode !== 200) {
+			// 				return;
+			// 			}
+			// 			const data = result.data.map((news) => {
+			// 				return {
+			// 					id: this.newGuid() + news.id,
+			// 					newsid: news.id,
+			// 					article_type: 1,
+			// 					datetime: friendlyDate(new Date(news.date).getTime()),
+			// 					title: news.title.rendered,
+			// 					image_url: "",
+			// 					source: "",
+			// 					comment_count: "",
+			// 					post_id: ""
+			// 				};
+			// 			});
+			// 			if (action === 1) {
+			// 				activeTab.data = data;
+			// 				this.refreshing = false;
+			// 			} else {
+			// 				data.forEach((news) => {
+			// 					activeTab.data.push(news);
+			// 				});
+			// 			}
+			// 			activeTab.requestParams.offset += data.length;
+			// 		},
+			// 		fail: (err) => {
+			// 			uni.showModal({
+			// 				content: err.errMsg,
+			// 				showCancel: false
+			// 			})
+			// 		},
+			// 		complete: (e) => {
+			// 			activeTab.isLoading = false;
+			// 		}
+			// 	});
+	}
+}
+</script>
+
+<style>
+	/* #ifndef APP-PLUS */
+	page {
+		width: 100%;
+		min-height: 100%;
+		display: flex;
+	}
+
+	/* #endif */
+
+</style>

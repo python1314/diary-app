@@ -20,7 +20,7 @@
 				<text class="info-text" v-if="options.comment_count">{{options.comment_count}}条评论</text>
 				<text class="info-text">{{options.datetime}}</text>
 			</view>
-			<view class="max-close-view" @click.stop="close">
+			<view class="max-close-view" @click.stop="close" v-if="false">
 				<view class="close-l close-h"></view>
 				<view class="close-l close-v"></view>
 			</view>

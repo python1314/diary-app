@@ -1,0 +1,71 @@
+<template>
+	<view class="center">
+		<view v-if="page['type']=='about'">
+			<image class="logo" :src="logoHref" mode="aspectFit"></image>
+			<view class="desc">
+				<text class="text bold">派学日记</text>
+				<text class="text">每天精选阅读技术博客文章</text>
+			</view>
+		</view>
+		<view v-if="page['type']=='help'">
+			<image class="logo" :src="logoHref" mode="aspectFit"></image>
+			<view class="desc">
+				<text class="text bold">寻求帮助</text>
+				<text class="text">Email(764831948@qq.com)</text>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				page: {
+					type: 'about'
+				},
+				logoHref: "/static/app-icon.png"
+			}
+		},
+		onLoad(event) {
+			this.page['type'] = event && event.type;
+		}
+	}
+</script>
+
+<style>
+	/* #ifndef APP-PLUS-NVUE */
+	@font-face {
+		font-family: texticons;
+		font-weight: normal;
+		font-style: normal;
+		src: url('~@/static/text-icon.ttf') format('truetype');
+	}
+
+	page {
+		background-color: #f8f8f8;
+	}
+
+	/* #endif*/
+
+	/* 解决头条小程序字体图标不显示问题，因为头条运行时自动插入了span标签，且有全局字体 */
+	/* #ifdef MP-TOUTIAO */
+	text :not(view) {
+		font-family: texticons;
+	}
+
+	/* #endif */
+	.logo {
+		margin: 0 auto;
+		width: 40%;
+	}
+	
+	.desc {
+		text-align: center;
+		line-height: 100upx;
+	}
+	
+	.text.bold {
+		font-weight: bold;
+	}
+</style>
