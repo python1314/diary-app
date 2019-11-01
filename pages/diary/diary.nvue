@@ -292,7 +292,7 @@
 
 	.scroll-h {
 		width: 750upx;
-		height: 80upx;
+		height: 90upx;
 		flex-direction: row;
 		/* #ifndef APP-PLUS */
 		white-space: nowrap;
@@ -320,8 +320,8 @@
 	.uni-tab-item-title {
 		color: #555;
 		font-size: 30upx;
-		height: 80upx;
-		line-height: 80upx;
+		height: 90upx;
+		line-height: 90upx;
 		flex-wrap: nowrap;
 		/* #ifndef APP-PLUS */
 		white-space: nowrap;

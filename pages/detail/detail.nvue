@@ -13,7 +13,7 @@
         </view>
         <view class="article-content">
             <rich-text :nodes="content" style="font-size: 30rpx;"></rich-text>
-			<button v-if="false" class="article-button-link" @click="read(banner.link&&banner.link.href)" type="default">{{banner.link&&banner.link.text}}</button>
+			<button class="article-button-link" @click="read(banner.link&&banner.link.href)" type="default">{{banner.link&&banner.link.text}}</button>
 		</view>
         <view class="comment-wrap"></view>
     </view>
@@ -176,4 +176,10 @@
         margin-bottom: 30upx;
         overflow: hidden;
     }
+	
+	.article-button-link {
+		height: 80upx;
+		line-height: 80upx;
+		font-size: 30upx;
+	}
 </style>
