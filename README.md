@@ -6,7 +6,7 @@
 
 <img src="https://img.cdn.aliyun.dcloud.net.cn/stream/screen/__UNI__9A112D9_0.jpg" align="left" width="200">
 <img src="https://img.cdn.aliyun.dcloud.net.cn/stream/screen/__UNI__9A112D9_1.jpg" align="left" width="200">
-<img src="https://img.cdn.aliyun.dcloud.net.cn/stream/screen/__UNI__9A112D9_2.jpg" align="left" width="200">
+<img src="https://img.cdn.aliyun.dcloud.net.cn/stream/screen/__UNI__9A112D9_2.jpg" align="left" width="200"> 
 
 ## 扫码访问
 
