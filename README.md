@@ -4,9 +4,9 @@
 
 ## 应用截图
 
-![1.jpg](./screenshot/1.jpg) 
-![2.jpg](./screenshot/2.jpg) 
-![3.jpg](./screenshot/3.jpg)
+![1.jpg](https://img.cdn.aliyun.dcloud.net.cn/stream/screen/__UNI__9A112D9_0.jpg) 
+![2.jpg](https://img.cdn.aliyun.dcloud.net.cn/stream/screen/__UNI__9A112D9_1.jpg) 
+![3.jpg](https://img.cdn.aliyun.dcloud.net.cn/stream/screen/__UNI__9A112D9_2.jpg)
 
 ## 扫码访问
 
